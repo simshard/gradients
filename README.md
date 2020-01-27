@@ -4,7 +4,7 @@
 
 - Install Composer Dependencies
 **composer install**
--generate app key
+- generate app key
 **php artisan key:generate**
 - Create Empty Database
 -add the connection credentials in the .env file 
