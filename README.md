@@ -7,8 +7,9 @@
 - generate app key
 **php artisan key:generate**
 - Create Empty Database
--add the connection credentials in the .env file 
 **gradients**
+- add the connection credentials in the .env file 
+
 - Database migrations
 **php artisan migrate**
 - Seed Database with data
