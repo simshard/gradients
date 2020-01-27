@@ -1,0 +1,134 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//jquery-UI
+@import '~jquery-ui/themes/base/all.css';
+
+//spectrum-colorpicker
+@import '~spectrum-colorpicker/spectrum.css';
+
+//grapick
+  @import '~grapick/dist/grapick.min.css';
+
+
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #111111;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color:#8abdf8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.section {
+    padding: 30px;
+}
+
+
+
+header {
+    background-image: linear-gradient(to right, #8700ff, #59a5f7);
+    padding: 1em 2em;
+    color: white;
+    font-weight: bold;
+}
+
+header h1 {
+    margin-top: 0;
+    font-size: 2.4em;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.header-top a {
+    color: inherit;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav>a {
+    padding-left: 12px;
+    padding-right: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.678);
+}
+
+.flex,
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.col {
+    flex: 1;
+    padding: 8px;
+}
+
+
+.box {
+    height: 200px;
+    width: 220px;
+    background-color:#bbd5f0;
+    border: 1px solid #ccc;
+    padding: 8px;
+     display: flex;
+      align-items:center;
+     justify-content: space-between;
+     display: -webkit-flex;
+              -webkit-align-items: center; /* Safari */
+
+}
+
+/* gradient editor */
+#directionslider {
+    width: 300px;
+    margin: 12px 0px 12px 20px;
+}
+
+#direction{width:32px;}
+
+#gp {
+    margin: 2em;
+    padding: 2em;
+    border: 1px dotted grey;
+    width: 50%;
+}
+
+#target {
+    margin-top: .5em;
+    margin-left: 2em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    border: 1px dotted grey;
+    height: 300px;
+    width: 400px;
+}
