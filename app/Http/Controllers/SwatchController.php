@@ -59,7 +59,8 @@ class SwatchController extends Controller
                 'title' => 'required|string|min:3|max:255',
                 'gradientTxt'=> 'required|string',
                 'colorvals'=> 'required|string',
-                 'direction'=>'required|numeric'
+                'direction'=>'required|numeric',
+                'handlers'=>'required||string'
             ]
         );
 
@@ -71,7 +72,8 @@ class SwatchController extends Controller
                 'title' => $request->title,
                 'gradient' => $request->gradientTxt,
                 'colorvals'=> $request->colorvals,
-                 'direction'=> $request->direction
+                'direction'=> $request->direction,
+                'handlers'=> $request->handlers
             ]
         );
         $status  = (bool) $swatch;
@@ -102,7 +104,6 @@ class SwatchController extends Controller
      */
     public function edit(Swatch $swatch)
     {
-
         $swatch = compact('swatch');
         return view('editGradient', $swatch);
     }

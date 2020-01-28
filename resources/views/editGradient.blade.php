@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-<h3>Edit Gradient {{$swatch->title}}</h3>
+<h3>Edit Gradient <em>{{$swatch->title}}</em></h3>
     <div>{{$swatch->gradient}}</div>
     <div>{{$swatch->direction}}</div>
     <div>{{$swatch->colorvals}}</div>

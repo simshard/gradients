@@ -13,7 +13,8 @@ class Swatch extends Model
         'title',
         'gradient',
         'colorvals',
-        'direction'
+        'direction',
+        'handlers'
         ];
 
     public function owner()

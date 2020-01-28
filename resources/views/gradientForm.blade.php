@@ -20,11 +20,16 @@
     </div>
 
      <div class="form-group">
-        <label for="colorvals" class="text-muted" >colorvals | gradientTxt</label>
+        <label class="text-muted" >colorvals | gradientTxt | handlers</label>
         <input readonly  name="colorvals" type="text" id="colorvals"
-            class="form-control col-md-6 {{ $errors->has('colorvals')?'is-invalid':'' }}" value=" ">
-        <input  readonly name="gradientTxt" type="text" id="gradientTxt"
-            class="form-control col-md-6"  >
+               class="form-control col-md-6 {{ $errors->has('colorvals')?'is-invalid':'' }}"
+               value="{{old('colorvals',$swatch->colorvals)}}">
+        <input readonly name="gradientTxt" type="text" id="gradientTxt"
+               class="form-control col-md-6 {{ $errors->has('gradientTxt')?'is-invalid':'' }}"
+               value="{{old('gradientTxt',$swatch->gradientTxt)}}">
+        <input readonly name="handlers" type="text" id="handlers"
+               class="form-control col-md-6 {{ $errors->has('handlers')?'is-invalid':'' }}"
+               value="{{old('gradientTxt',$swatch->gradientTxt)}}">
     </div>
 
 
@@ -38,7 +43,7 @@
 
 
 
- <script src="{{ asset('js/spectrum.js') }}"></script>
+<!-- <script src="{ { asset('js/spectrum.js') }}"></script>-->
  <script src="{{ asset('js/grapick.min.js') }}" ></script>
  <script type="text/javascript">
       $(document).ready(function () {
@@ -81,43 +86,34 @@
         gp.addHandler(100, 'rgb(0, 0, 255)');
         document.getElementById("target").style.background = gp.getSafeValue();
 
-
         // Do stuff on change of the gradient
         gp.on('change', complete => {
-
-
-             document.getElementById("target").style.background = gp.getSafeValue();
-             //$("#target").css("background-color",gp.getSafeValue()  );
-             var grad=gp.getValue();
-
-             //alert($("#target").css("background-color", grad) );
-
-             var colorvals=gp.getColorValue();
+            document.getElementById("target").style.background = gp.getSafeValue();
+            var grad=gp.getValue();
+            var colorvals=gp.getColorValue();
 
             var gradtxt=gp.getValue();
             $("#gradientTxt").val(gradtxt);
 
-            var handlers=gp.getHandlers();
-
-            var hcolors = handlers.map(function(o) { return o.color });
-            var hpos=handlers.map(function(o) { return o.position });
+            var handlers=JSON.stringify(gp.getHandlers());
+            $("#handlers").val(handlers);
+            //var hcolors = handlers.map(function(o) { return o.color });
+            //var hpos=handlers.map(function(o) { return o.position });
             var direction=gp.getDirection();
-
             $("#colorvals").val(colorvals);
 
-        /*
-           console.log('color val = '+gp.getColorValue() );
-           console.log('safe val = '+gp.getSafeValue() );
-           console.log('simple val = '+gp.getValue() );
-           console.log('prefixed val = '+gp.getPrefixedValues());
-
-          console.log(gp.getHandlers());
-           console.log(hcolors);
-           console.log(hpos);
+        /*  console.log(gp.getHandlers());
+            console.log(handlers); //json
+            console.log('color val = '+gp.getColorValue() );
+            console.log('safe val = '+gp.getSafeValue() );
+            console.log('simple val = '+gp.getValue() );
+            console.log('prefixed val = '+gp.getPrefixedValues());
+            console.log(gp.getHandlers());
+            console.log(hcolors);
+            console.log(hpos);
             console.log(colorvals);
-
-           console.log(direction);
-           // gp.setDirection('45deg');
+            console.log(direction);
+            // gp.setDirection('45deg');
         */
 
          })
