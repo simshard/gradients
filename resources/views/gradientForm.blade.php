@@ -29,7 +29,7 @@
                value="{{old('gradientTxt',$swatch->gradientTxt)}}">
         <input readonly name="handlers" type="text" id="handlers"
                class="form-control col-md-6 {{ $errors->has('handlers')?'is-invalid':'' }}"
-               value="{{old('gradientTxt',$swatch->gradientTxt)}}">
+               value="{{old('handlers',$swatch->handlers)}}">
     </div>
 
 
