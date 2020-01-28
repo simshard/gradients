@@ -1,6 +1,7 @@
- ## Base8 Innovations  Gradients App  Simon Kember
- user generated gradients
- To do : edit gradient
+ ## Base8 Innovations
+ ###Gradients App  Simon Kember
+ user generated gradients.
+ To do : edit/update gradient
  
  ### Setup
 after unpacking repo...
