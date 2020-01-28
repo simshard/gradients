@@ -4,7 +4,7 @@
  
  **To do**
  - edit/update gradient
- - transition animations?
+ - CSS transition animations?
  
  ### Setup
 after unpacking repo...
