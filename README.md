@@ -1,4 +1,4 @@
- ## Innovations8 Gradients App  Simon Kember
+ ## Base8 Innovations  Gradients App  Simon Kember
  user generated gradients
  To do : edit gradient
  
