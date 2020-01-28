@@ -1,7 +1,8 @@
  ## Base8 Innovations
  ### Gradients App  
  user generated gradients.
- *To do :*
+ 
+ **To do**
  - edit/update gradient
  - transition animations?
  
