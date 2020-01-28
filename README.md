@@ -24,6 +24,6 @@ after unpacking repo...
 - Install npm dependencies and compile assets
 **npm install && npm run dev**
 
-
+- login : admin@example.com :: password
 
   
