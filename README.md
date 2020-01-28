@@ -1,4 +1,4 @@
-## Base8 Innovations
+ ## Base8 Innovations
  ### Gradients App  
  user generated gradients.
  
@@ -25,3 +25,5 @@ after unpacking repo...
 **npm install && npm run dev**
 
 - login : admin@example.com :: password
+
+  
