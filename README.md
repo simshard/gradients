@@ -1,7 +1,9 @@
  ## Innovations8 Gradients App  Simon Kember
+ user generated gradients
+ To do : edit gradient
  
  ### Setup
-
+after unpacking repo...
 - Install Composer Dependencies
 **composer install**
 - generate app key
