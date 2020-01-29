@@ -18,14 +18,13 @@ Route::post('/gradient', 'SwatchController@store');
 
 Route::get('/gradient/{swatch}', 'SwatchController@show');
 Route::get('/gradient/{swatch}/edit', 'SwatchController@edit');
-Route::delete('/gradient/{swatch}/delete', 'SwatchController@destroy');
+Route::post('/gradient/{swatch}/edit', 'SwatchController@update');
 
+Route::delete('/gradient/{swatch}/delete', 'SwatchController@destroy');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/test', function () {
-    return view('test');
-});
+//Route::get('/test', function () { return view('test'); });
 

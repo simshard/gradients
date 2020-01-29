@@ -42,13 +42,13 @@ class SwatchController extends Controller
      */
     public function create()
     {
-        return view('gradient');
+        return view('createGradient');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -57,10 +57,9 @@ class SwatchController extends Controller
             request(),
             [
                 'title' => 'required|string|min:3|max:255',
-                'gradientTxt'=> 'required|string',
-                'colorvals'=> 'required|string',
-                'direction'=>'required|numeric',
-                'handlers'=>'required||string'
+                'gradientTxt'=> 'string',
+                'direction'=>'numeric',
+                'handlers'=>'string'
             ]
         );
 
@@ -71,67 +70,97 @@ class SwatchController extends Controller
                 'owner_id' => $attributes['owner_id'],
                 'title' => $request->title,
                 'gradient' => $request->gradientTxt,
-                'colorvals'=> $request->colorvals,
                 'direction'=> $request->direction,
                 'handlers'=> $request->handlers
             ]
         );
         $status  = (bool) $swatch;
 
-        $message =$status ? 'Swatch ('.$attributes['title'].') Created!' : 'Error Creating swatch';
-        return redirect('/')->with('message', $message);
+        $message =$status ? 'Swatch '.$attributes['title'].' created!' : 'Error Creating swatch';
+        return redirect('/home')->with('message', $message);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Swatch  $swatch
+     * @param \App\Swatch $swatch
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Swatch $swatch)
     {
         $swatch = compact('swatch');
-
-        //dd($swatch);
         return view('showGradient', $swatch);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Swatch  $swatch
+     * @param  \App\Swatch $swatch
      * @return \Illuminate\Http\Response
      */
     public function edit(Swatch $swatch)
     {
-        $swatch = compact('swatch');
-        return view('editGradient', $swatch);
+        //create  handler color stops
+        $handlers=json_decode($swatch->handlers, true);
+        $hstr='';
+        for ($i=0; $i < sizeof($handlers); $i++) {
+             $hstr.=(
+               'gp.addHandler('.
+                round($handlers[$i]['position']) .',\''.
+                $handlers[$i]['color'] .'\');'
+              );
+        }
+            $swatch->hstr=$hstr;
+            $swatch = compact('swatch');
+        return view('gradientEditForm', $swatch);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Swatch  $swatch
+     * @param \Illuminate\Http\Request $request
+     * @param  \App\Swatch              $swatch
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Swatch $swatch)
     {
-        //
+        $attributes = $this->validate(
+            request(),
+            [
+                'title' => 'required|string|min:3|max:255',
+                'gradientTxt'=> 'string',
+                'direction'=>'numeric',
+                'handlers'=>'string'
+            ]
+        );
+
+        $swatch = Swatch::whereId($swatch->id)->update(
+            [
+                'title' => $request->title,
+                'gradient' => $request->gradientTxt,
+                'direction'=> $request->direction,
+                'handlers'=> $request->handlers
+            ]
+        );
+        $status  = (bool) $swatch;
+
+        $message =$status ? 'Swatch '.$attributes['title'].' updated!' : 'Error updating swatch '.$swatch->title;
+        return redirect('/home')->with('message', $message);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Swatch  $swatch
+     * @param  \App\Swatch $swatch
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Swatch $swatch)
     {
-        // dd($swatch->id);
         $status=$swatch->delete($swatch->id);
 
-        $message =$status ? 'Swatch deleted!' : 'Error deleting swatch';
+        $message =$status ? 'Swatch deleted!' : 'Error deleting swatch '.$swatch->title;
 
         return redirect('home')->with('message', $message);
     }

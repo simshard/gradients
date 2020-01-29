@@ -19,7 +19,6 @@ class CreateSwatchesTable extends Migration
             $table->string('title');
             $table->text('gradient');
             $table->string('direction');
-            $table->text('colorvals');
             $table->text('handlers');
             $table->timestamps();
             $table->foreign('owner_id')->references('id')->on('users');
