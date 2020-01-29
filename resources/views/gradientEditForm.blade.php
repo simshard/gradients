@@ -26,8 +26,8 @@
                </p>
         </div>
      <div class="form-group">
-     <input readonly name="gradientTxt" type="text" id="gradientTxt" class="form-control col-md-6" value="{{$swatch->gradient}}" >
-        <input readonly name="handlers" type="text" id="handlers" class="form-control col-md-6" value="{{$swatch->handlers}}" >
+     <input readonly name="gradientTxt" type="hidden" id="gradientTxt" class="form-control col-md-6" value="{{$swatch->gradient}}" >
+        <input readonly name="handlers" type="hidden" id="handlers" class="form-control col-md-6" value="{{$swatch->handlers}}" >
     </div>
     <div class="form-group">
         <button type="submit" name="submit" class=" btn btn-primary">

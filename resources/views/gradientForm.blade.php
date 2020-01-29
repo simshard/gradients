@@ -21,8 +21,8 @@
 
 
      <div class="form-group">
-        <input readonly name="gradientTxt" type="text" id="gradientTxt" class="form-control col-md-6 " >
-        <input readonly name="handlers" type="text" id="handlers" class="form-control col-md-6 " >
+        <input readonly name="gradientTxt" type="hidden" id="gradientTxt" class="form-control col-md-6 " >
+        <input readonly name="handlers" type="hidden" id="handlers" class="form-control col-md-6 " >
     </div>
 
 
