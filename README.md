@@ -2,9 +2,7 @@
  ### Gradients App  
  user generated gradients.
  
- **To do**
- - edit/update gradient
- - CSS transition animations?
+ 
  
  ### Setup
 after unpacking repo...
