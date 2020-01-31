@@ -21,9 +21,9 @@
 
 
      <div class="form-group">
-        <input readonly name="gradientTxt" type="text" id="gradientTxt" class="form-control col-md-6 " value="linear-gradient(90deg, rgb(255, 0, 0) 0%, rgb(0, 0, 249) 100%)" >
-        <input readonly name="colorvals" type="text" id="colorvals" class="form-control col-md-6 " value="rgb(255, 0, 0) 0%, rgb(0, 0, 249) 100% " >
-        <input readonly name="handlers" type="text" id="handlers" class="form-control col-md-6 " value='[{"position":0,"selected":0,"color":"rgb(255, 0, 0)"},{"position":100,"selected":1,"color":"rgb(0, 0, 255)"}]' >
+        <input readonly name="gradientTxt" type="hidden" id="gradientTxt" class="form-control col-md-6 " value="linear-gradient(90deg, rgb(255, 0, 0) 0%, rgb(0, 0, 249) 100%)" >
+        <input readonly name="colorvals" type="hidden" id="colorvals" class="form-control col-md-6 " value="rgb(255, 0, 0) 0%, rgb(0, 0, 249) 100% " >
+        <input readonly name="handlers" type="hidden" id="handlers" class="form-control col-md-6 " value='[{"position":0,"selected":0,"color":"rgb(255, 0, 0)"},{"position":100,"selected":1,"color":"rgb(0, 0, 255)"}]' >
     </div>
 
 
