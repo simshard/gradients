@@ -89,22 +89,14 @@ $(document).ready(function () {
 
     $("#direction").val({{$swatch->direction}});
 
-    //document.getElementById("target").style.background = gp.getSafeValue();
      document.getElementById("target").style.background =" linear-gradient("+{{$swatch->direction}}+"deg,"+gp.getColorValue()+")";
-    // document.getElementById("target").style.background =" linear-gradient("+{{$swatch->direction}}+"deg,"+{{$swatch->colorvals}}+")";
-
         // Do stuff on change of the gradient
         gp.on('change', complete => {
             console.log('safevalue='+gp.getSafeValue());
 
-           // console.log('myvalue= linear-gradient('+direction+'deg,'+gp.getColorValue()+')');
             var myvalue='linear-gradient('+direction+'deg,'+gp.getColorValue()+')';
             console.log('myvalue='+myvalue);
-
-            // document.getElementById("target").style.background = gp.getSafeValue();
-           // document.getElementById("target").style.background = "linear-gradient("+direction+"deg,"+gp.getColorValue()+")";
             document.getElementById("target").style.background = myvalue;
-
 
             var gradtxt=gp.getValue();
             $("#gradientTxt").val(gradtxt);
@@ -114,16 +106,11 @@ $(document).ready(function () {
 
             var handlers=JSON.stringify(gp.getHandlers());
             $("#handlers").val(handlers);
-
-           //
-          //  gp.setDirection(direction);
-
-
          })
 
 
 
-
+        /*
         console.log('gp color val = '+gp.getColorValue() );
          var colorvals=$("#colorvals").val();
          console.log('colorvalsfield='+colorvals);
@@ -132,6 +119,7 @@ $(document).ready(function () {
         console.log('gradient txt field='+$("#gradientTxt").val());
         var direction=$("#direction").val();
         console.log('direction='+$("#direction").val());
+        */
 
 
 

@@ -92,7 +92,6 @@
         // Do stuff on change of the gradient
         gp.on('change', complete => {
             document.getElementById("target").style.background = gp.getSafeValue();
-            //var grad=gp.getValue();
             var colorvals=gp.getColorValue();
             $("#colorvals").val(colorvals);
 
@@ -103,22 +102,18 @@
             $("#handlers").val(handlers);
 
 
-            // gp.setDirection(direction);
-
-          console.log(gp.getHandlers());
+         /* //console.log(gp.getHandlers());
             //console.log(handlers); //json
-            console.log('color val = '+gp.getColorValue() );
+           // console.log('color val = '+gp.getColorValue() );
            // console.log('safe val = '+gp.getSafeValue() );
            // console.log('simple val = '+gp.getValue() );
            // console.log('prefixed val = '+gp.getPrefixedValues());
 
-           // console.log(hcolors);
-          //  console.log(hpos);
             console.log(colorvals);
             var direction=$("#direction").val();
             console.log('direction='+direction);
             // gp.setDirection('45deg');
-        /**/
+        */
 
          })
 
