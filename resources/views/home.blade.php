@@ -23,7 +23,10 @@
 
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm"  >
-      <div class="card-img-top" style="height:225px;  background-image: {{$swatch->gradient}};" ></div>
+     <!--<div class="card-img-top" style="height:225px;  background-image: {{$swatch->gradient}};" ></div>-->
+       <div class="card-img-top" style="height:225px;
+         background-image:linear-gradient({{$swatch->direction}}deg, {{$swatch->colorvals}}" ></div>
+
         <div class="card-body d-flex flex-column align-items-start">
         <h5><a class="card-title card-link text-dark" href="/gradients/{{$swatch->id }}">
         {{$swatch->title }}</a></h5>

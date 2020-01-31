@@ -21,8 +21,9 @@
 
 
      <div class="form-group">
-        <input readonly name="gradientTxt" type="hidden" id="gradientTxt" class="form-control col-md-6 " >
-        <input readonly name="handlers" type="hidden" id="handlers" class="form-control col-md-6 " >
+        <input readonly name="gradientTxt" type="text" id="gradientTxt" class="form-control col-md-6 " value="linear-gradient(90deg, rgb(255, 0, 0) 0%, rgb(0, 0, 249) 100%)" >
+        <input readonly name="colorvals" type="text" id="colorvals" class="form-control col-md-6 " value="rgb(255, 0, 0) 0%, rgb(0, 0, 249) 100% " >
+        <input readonly name="handlers" type="text" id="handlers" class="form-control col-md-6 " value='[{"position":0,"selected":0,"color":"rgb(255, 0, 0)"},{"position":100,"selected":1,"color":"rgb(0, 0, 255)"}]' >
     </div>
 
 
@@ -54,7 +55,12 @@
 
         },
       });
-    });
+      $( "#directionslider" ).slider({
+          change: function( event, ui ) {
+          document.getElementById("target").style.background ='linear-gradient('+$("#direction").val()+'deg,'+gp.getColorValue()+')';
+          }
+        });
+});
 
     const gp = new Grapick({
             el: '#gp',
@@ -82,12 +88,13 @@
 
         gp.setDirection('90deg');
         $("#direction").val('90');
-
+      var direction=$("#direction").val;
         // Do stuff on change of the gradient
         gp.on('change', complete => {
             document.getElementById("target").style.background = gp.getSafeValue();
-            var grad=gp.getValue();
+            //var grad=gp.getValue();
             var colorvals=gp.getColorValue();
+            $("#colorvals").val(colorvals);
 
             var gradtxt=gp.getValue();
             $("#gradientTxt").val(gradtxt);
@@ -95,22 +102,23 @@
             var handlers=JSON.stringify(gp.getHandlers());
             $("#handlers").val(handlers);
 
-            var direction=$("#direction").val;
-           // gp.setDirection(direction);
 
-        /*  console.log(gp.getHandlers());
-            console.log(handlers); //json
+            // gp.setDirection(direction);
+
+          console.log(gp.getHandlers());
+            //console.log(handlers); //json
             console.log('color val = '+gp.getColorValue() );
-            console.log('safe val = '+gp.getSafeValue() );
-            console.log('simple val = '+gp.getValue() );
-            console.log('prefixed val = '+gp.getPrefixedValues());
-            console.log(gp.getHandlers());
-            console.log(hcolors);
-            console.log(hpos);
+           // console.log('safe val = '+gp.getSafeValue() );
+           // console.log('simple val = '+gp.getValue() );
+           // console.log('prefixed val = '+gp.getPrefixedValues());
+
+           // console.log(hcolors);
+          //  console.log(hpos);
             console.log(colorvals);
-            console.log(direction);
+            var direction=$("#direction").val();
+            console.log('direction='+direction);
             // gp.setDirection('45deg');
-        */
+        /**/
 
          })
 

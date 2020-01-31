@@ -26,8 +26,9 @@
                </p>
         </div>
      <div class="form-group">
-     <input readonly name="gradientTxt" type="hidden" id="gradientTxt" class="form-control col-md-6" value="{{$swatch->gradient}}" >
-        <input readonly name="handlers" type="hidden" id="handlers" class="form-control col-md-6" value="{{$swatch->handlers}}" >
+    <input readonly name="gradientTxt" type="text" id="gradientTxt" class="form-control col-md-6" value="linear-gradient({{$swatch->direction}}deg,{{$swatch->colorvals}})" >
+    <input readonly name="colorvals" type="text" id="colorvals" class="form-control col-md-6" value="{{$swatch->colorvals}}" >
+    <input readonly name="handlers" type="text" id="handlers" class="form-control col-md-6" value="{{$swatch->handlers}}" >
     </div>
     <div class="form-group">
         <button type="submit" name="submit" class=" btn btn-primary">
@@ -52,7 +53,16 @@ $(document).ready(function () {
 
         },
       });
+
+
+  $( "#directionslider" ).slider({
+      change: function( event, ui ) {
+      document.getElementById("target").style.background ='linear-gradient('+$("#direction").val()+'deg,'+gp.getColorValue()+')';
+      }
     });
+
+
+});
 //init gp
     const gp = new Grapick({
             el: '#gp',
@@ -79,23 +89,52 @@ $(document).ready(function () {
 
     $("#direction").val({{$swatch->direction}});
 
-        document.getElementById("target").style.background = gp.getSafeValue();
+    //document.getElementById("target").style.background = gp.getSafeValue();
+     document.getElementById("target").style.background =" linear-gradient("+{{$swatch->direction}}+"deg,"+gp.getColorValue()+")";
+    // document.getElementById("target").style.background =" linear-gradient("+{{$swatch->direction}}+"deg,"+{{$swatch->colorvals}}+")";
 
         // Do stuff on change of the gradient
         gp.on('change', complete => {
-            document.getElementById("target").style.background = gp.getSafeValue();
-            var grad=gp.getValue();
+            console.log('safevalue='+gp.getSafeValue());
+
+           // console.log('myvalue= linear-gradient('+direction+'deg,'+gp.getColorValue()+')');
+            var myvalue='linear-gradient('+direction+'deg,'+gp.getColorValue()+')';
+            console.log('myvalue='+myvalue);
+
+            // document.getElementById("target").style.background = gp.getSafeValue();
+           // document.getElementById("target").style.background = "linear-gradient("+direction+"deg,"+gp.getColorValue()+")";
+            document.getElementById("target").style.background = myvalue;
+
 
             var gradtxt=gp.getValue();
             $("#gradientTxt").val(gradtxt);
 
+            var colorvals=gp.getColorValue();
+            $("#colorvals").val(colorvals);
+
             var handlers=JSON.stringify(gp.getHandlers());
             $("#handlers").val(handlers);
 
-           //  var direction=$("#direction").val;
-           // gp.setDirection(direction);
+           //
+          //  gp.setDirection(direction);
+
 
          })
+
+
+
+
+        console.log('gp color val = '+gp.getColorValue() );
+         var colorvals=$("#colorvals").val();
+         console.log('colorvalsfield='+colorvals);
+         var gradtxt=document.getElementById("target").style.background;
+        console.log('GP gradientTxt='+gradtxt );
+        console.log('gradient txt field='+$("#gradientTxt").val());
+        var direction=$("#direction").val();
+        console.log('direction='+$("#direction").val());
+
+
+
 </script>
 
   </form>

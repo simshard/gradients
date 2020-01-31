@@ -57,7 +57,7 @@ class SwatchController extends Controller
             request(),
             [
                 'title' => 'required|string|min:3|max:255',
-                'gradientTxt'=> 'string',
+                'colorvals'=> 'string',
                 'direction'=>'numeric',
                 'handlers'=>'string'
             ]
@@ -65,11 +65,15 @@ class SwatchController extends Controller
 
         $attributes['owner_id'] = Auth::user()->id;
 
+        $gradStr='linear-gradient('.$attributes['direction'].'deg,' .$attributes['colorvals'].')';
+
+        // die($gradStr);
         $swatch = Swatch::create(
             [
                 'owner_id' => $attributes['owner_id'],
                 'title' => $request->title,
-                'gradient' => $request->gradientTxt,
+                'gradient' => $gradStr,
+                'colorvals'=>$request->colorvals,
                 'direction'=> $request->direction,
                 'handlers'=> $request->handlers
             ]
@@ -105,14 +109,14 @@ class SwatchController extends Controller
         $handlers=json_decode($swatch->handlers, true);
         $hstr='';
         for ($i=0; $i < sizeof($handlers); $i++) {
-             $hstr.=(
-               'gp.addHandler('.
+            $hstr.=(
+                'gp.addHandler('.
                 round($handlers[$i]['position']) .',\''.
                 $handlers[$i]['color'] .'\');'
-              );
+            );
         }
-            $swatch->hstr=$hstr;
-            $swatch = compact('swatch');
+        $swatch->hstr=$hstr;
+        $swatch = compact('swatch');
         return view('gradientEditForm', $swatch);
     }
 
@@ -131,15 +135,20 @@ class SwatchController extends Controller
             [
                 'title' => 'required|string|min:3|max:255',
                 'gradientTxt'=> 'string',
+                'colorvals'=> 'string',
                 'direction'=>'numeric',
                 'handlers'=>'string'
             ]
         );
 
+        $gradStr='linear-gradient('.$attributes['direction'].'deg,' .$attributes['colorvals'].')';
+        //die($gradStr);
+
         $swatch = Swatch::whereId($swatch->id)->update(
             [
                 'title' => $request->title,
-                'gradient' => $request->gradientTxt,
+                 'gradient' => $gradStr,
+                 'colorvals'=>$request->colorvals,
                 'direction'=> $request->direction,
                 'handlers'=> $request->handlers
             ]
